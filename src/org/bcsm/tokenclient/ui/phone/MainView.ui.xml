@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xml>
+
+<?xdevuiml version="1.0"?>
+<?template BROWSER_XGA?>
+<?import com.xdev.ui.XdevButton?>
+<?import com.xdev.ui.XdevGridLayout?>
+<?import com.xdev.ui.XdevPasswordField?>
+<?import com.xdev.ui.XdevTextArea?>
+<?import com.xdev.ui.XdevTextField?>
+<?import com.xdev.ui.XdevUpload?>
+<?import com.xdev.ui.XdevView?>
+<XdevView xmlns:x="http://xml.xdev-software.com/xdevuiml" x:name="MainView">
+    <x:constraints zpos="0" width="100%" height="100%" />
+    <XdevGridLayout x:name="gridLayout" autoFill="com.xdev.ui.XdevGridLayout.AutoFill.HORIZONTAL">
+        <x:constraints zpos="0" width="100%" height="100%" />
+        <XdevTextField columns="5" caption="Node:" x:name="txtNode" value="https://ropsten.infura.io/sS899But8ce9sP7plpOl">
+            <x:constraints gridx="1" gridy="1" top="65px" left="76px" weighty="0.0" weightx="0.1" width="100%" alignment="BOTTOM_RIGHT" />
+        </XdevTextField>
+        <XdevButton caption="Connect" enabled="false" x:name="btnConnext">
+            <x:constraints gridx="1" gridy="2" top="332px" left="428px" weighty="0.0" weightx="0.1" width="100%" alignment="BOTTOM_RIGHT" />
+            <x:event>click.buttonClick</x:event>
+        </XdevButton>
+        <XdevUpload caption="Upload wallet file:" x:name="uploadWalletfile">
+            <x:constraints gridx="1" gridy="3" top="194px" left="151px" weighty="0.0" weightx="0.1" width="100%" />
+        </XdevUpload>
+        <XdevPasswordField columns="5" caption="Password:" x:name="txtPassword">
+            <x:constraints gridx="1" gridy="4" top="267px" left="288px" weighty="0.0" weightx="0.1" width="100%" alignment="BOTTOM_RIGHT" />
+        </XdevPasswordField>
+        <XdevTextField columns="5" caption="Smart Contract:" enabled="false" x:name="txtSmartContract" value="0xa316e5f639e3224b60198e869d33f621f9bb2979">
+            <x:constraints gridx="1" gridy="5" top="372px" left="443px" weighty="0.0" weightx="0.1" width="100%" />
+        </XdevTextField>
+        <XdevButton caption="Events subscribe" enabled="false" x:name="btnEventsSubscribe">
+            <x:constraints gridx="1" gridy="6" top="379px" left="473px" weighty="0.0" weightx="0.1" width="100%" alignment="BOTTOM_RIGHT" />
+        </XdevButton>
+        <XdevButton caption="Get Tokens" x:name="btnGetTokens">
+            <x:constraints gridx="1" gridy="7" top="507px" left="497px" weighty="0.0" weightx="0.1" width="100%" />
+            <x:event>click.buttonClick</x:event>
+        </XdevButton>
+        <XdevTextArea columns="5" caption="Log:" x:name="txtLog" rows="7">
+            <x:constraints gridx="1" gridy="8" top="517px" left="117px" weighty="0.1" weightx="0.1" width="100%" height="100%" />
+        </XdevTextArea>
+    </XdevGridLayout>
+</XdevView>
+
