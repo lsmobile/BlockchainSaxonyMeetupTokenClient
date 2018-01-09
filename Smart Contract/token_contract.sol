@@ -70,7 +70,7 @@ contract BlockchainSaxonyMeetupCoin is StandardToken {
         bytes32 addressSecret;
     }
 
-    typClaim [] claims;                     // array of struct. To be able to iterate over the users claiming tokens.
+    typClaim [] claims;                         // array of struct. To be able to iterate over the users claiming tokens.
 
 
     function BlockchainSaxonyMeetupCoin() {
@@ -79,9 +79,9 @@ contract BlockchainSaxonyMeetupCoin is StandardToken {
 
         name = "BlockchainSaxonyMeetupCoin";                                   // Set the name for display purposes
 
-        decimals = 0;                            // Amount of decimals for display purposes
+        decimals = 0;                           // Amount of decimals for display purposes
 
-        symbol = "SAX";                               // Set the symbol for display purposes
+        symbol = "SAX";                         // Set the symbol for display purposes
 
         owner = msg.sender;
 
@@ -92,20 +92,20 @@ contract BlockchainSaxonyMeetupCoin is StandardToken {
     // User calls getToken with his addressSecret
     // Assignment: Address -> addressSecret (Hash (Address ^ Secret _bytes32))
     // addressSecret auf Userseite generieren -> TODO
-    // Eine Member Addresse kann mehrfach getToken aufrufen -> TODO
+    // Eine Member Addresse kann mehrfach getToken aufrufen. Evtl in setSecret() lösen. Nur einmal auszahlen! -> TODO 
 
 
     function getToken(bytes32 addressSecret) returns (bool success) {
 
         require (members[msg.sender]);      // check if msg.sender is in members
-
-        // TODO write address and addressSecret into typClaim 
+        
+        uint i = claims.length;             // get array length
+        claims.length++;                    // increase array length
+        claims[i].user = msg.sender;        // write current msg.sender into latest index of claims[].user
+        claims[i].addressSecret = addressSecret;    //write addressSecret into latest index of claims[].addressSecret
 
         return true;
-
     }
-
-
 
     function setMembers(address _member) returns (bool success) {
 
@@ -124,11 +124,11 @@ contract BlockchainSaxonyMeetupCoin is StandardToken {
     function setSecret(bytes32 _secret) {
 
         require(msg.sender == owner);       // check if msg.sender is owner
-        uint256 amount = 5;
+        uint256 amount = 5;                 // every user gets *amount* tokens
 
         for (uint i = 0; i < claims.length; i++){
 
-//Hash of adress alone. Resultung hash bit-by-bit XOR secret and hash again.
+//Hash of adress alone. Resulting hash bit-by-bit XOR secret and hash again.
             bytes32 hashAddress = keccak256(claims[i].user);
             bytes32 validHash = keccak256(hashAddress ^ _secret);
 
@@ -141,6 +141,7 @@ contract BlockchainSaxonyMeetupCoin is StandardToken {
             }
             delete claims[i];
         }
+        claims.length = claims.length - i;
 
     }
 
@@ -162,7 +163,7 @@ contract BlockchainSaxonyMeetupCoin is StandardToken {
 
         //it is assumed when one does this that the call *should* succeed, otherwise one would use vanilla approve instead.
 
-require(_spender.call(bytes4(bytes32(sha3("receiveApproval(address,uint256,address,bytes)"))), msg.sender, _value, this, _extraData));
+        require(_spender.call(bytes4(bytes32(sha3("receiveApproval(address,uint256,address,bytes)"))), msg.sender, _value, this, _extraData));
 
         return true;
 
