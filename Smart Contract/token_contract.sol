@@ -9,6 +9,17 @@ In other words. This is intended for deployment in something like a Token Factor
 Imagine coins, currencies, shares, voting weight, etc.
 
 Machine-based, rapid creation of many tokens would not necessarily need these extra features or will be minted in other manners.
+/*
+
+This Token Contract implements the standard token functionality (https://github.com/ethereum/EIPs/issues/20) as well as the following OPTIONAL extras intended for use by humans.
+
+
+
+In other words. This is intended for deployment in something like a Token Factory or Mist wallet, and then used by humans.
+
+Imagine coins, currencies, shares, voting weight, etc.
+
+Machine-based, rapid creation of many tokens would not necessarily need these extra features or will be minted in other manners.
 
 
 
@@ -99,6 +110,14 @@ contract BlockchainSaxonyMeetupCoin is StandardToken {
 
         require (members[msg.sender]);      // check if msg.sender is in members
         
+        for (uint j = 0; j < claims.length; j++){
+            uint8 alreadyClaimed;
+                if (msg.sender == claims[i].user){
+                    alreadyClaimed ++;
+                } 
+        }
+        // Event to inform user if failed TODO
+        require (alreadyClaimed < 1);        // check if msg.sender is already in claim
         uint i = claims.length;             // get array length
         claims.length++;                    // increase array length
         claims[i].user = msg.sender;        // write current msg.sender into latest index of claims[].user
@@ -119,7 +138,7 @@ contract BlockchainSaxonyMeetupCoin is StandardToken {
 
     // Validate Mapping. Check if address + secret = hash
     // This function gets called after every blockchain meetup by the owner.
-    // End of function -> Delete array
+    // End of function -> Reset array
 
     function setSecret(bytes32 _secret) {
 
@@ -140,8 +159,10 @@ contract BlockchainSaxonyMeetupCoin is StandardToken {
 
             }
             delete claims[i];
+            claims.length = 0;
+            
         }
-        claims.length = claims.length - i;
+        
 
     }
 

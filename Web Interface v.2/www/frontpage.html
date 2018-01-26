@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Saxony Blockchain Meetup</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <link href="css/creative.css" rel="stylesheet">
+    <!-- min !-->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+<style>
+#holder { border: 5px dashed #ccc; width: 200px; height: 100px; margin: 20px auto;}
+#holder.hover { border: 10px dashed #333; }
+</style>
+
+</head>
+
+<body>
+
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+           <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">Saxony @ Blockchain</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#token">Get Token</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about">About</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+   </nav>
+
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <h1 id="homeHeading">Get SAX Tokens</h1>
+                <hr>
+                <p>Come to the Blockchain Saxony Meetup and get SAX Tokens <br>
+                
+                
+                
+            </div>
+            <a href="#token" class="btn btn-primary btn-xl page-scroll">Get started</a>
+        </div>
+    </header>
+
+    <section class="bg-primary" id="token">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">How does this work?</h2>
+                    <hr class="light">
+                    <p class="text-faded">1. <a href="https://metamask.io/"> Install MetaMask </a> Browser Plugin</p>
+
+                    <p class="text-faded">2. Register at MetaMask Plugin</p>
+
+                    <p class="text-faded">3. Inside Metamask select on the top left corner "Rinkeby Test Network". </p>
+                    
+                    <center><img src="img/select_rinkeby.png" alt="how to select the rinkeby network" height="400" width="300"></center><br>
+                    
+                    <p class="text-faded">4. Get Test Ether by clicking on "Buy" inside MetaMask and then on "Rinkeby Test Faucet". </p>
+                    
+                    <center><img src="img/buy_rinkeby_ether.png" alt="how to get test ether" height="300" width="300"></center>
+                    <br>
+
+                    <p class="text-faded">5. Come to the meetup and catch the secret </p>
+
+                    <!-- Input field -->
+
+                    <p class="text-faded">6. Type the secret in the box below.
+                        <br> A transaction towards the token smart contract will be triggered.
+                    </p>
+                    
+                    <div id="input">
+                        <form action="/frontpage.html" method = "POST">
+                            Enter secret: <input type="text" name="secret" id="secret"/><br><br>
+                            <div id="warning" style="color:red;"> </div><br>
+                            <input type="submit" value="Send tx to contract" OnClick="encodeSecret()"/>
+                        </form>
+                        
+                    </div>
+                    <br>
+                    
+                    <!-- Output field -->
+                    <div>
+                        <p class="text-faded" id="output" style="font-weight: bold;">                 
+                        </p>
+                    </div>
+
+                    
+            
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-light" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+
+                <h2 class="section-heading">Project Info</h2>
+                    <hr style="border-color: #333">
+                    <p class="text-secondary">
+                        
+                        The smart contract address on Rinkeby is:<br>
+                        <a href="https://rinkeby.etherscan.io/address/0x23a610a8aa3582ef0ad45c60a7c66162b5d5b6c8"> 0x23a610a8aa3582ef0ad45c60a7c66162b5d5b6c8 </a>
+                        <br>
+                        The <a href="https://github.com/egodigitus/BlockchainSaxonyMeetupTokenClient">source code of this project </a> can be found on github.
+                        <br>
+                        This project is part of the <a href="https://www.meetup.com/de-DE/BlockchainMeetupSaxony/">Blockchain Saxony Meetup </a> developed by enthusiasts during the Hands-On.
+
+
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.js"></script>
+    <!-- Zuvor min! <script src="js/bootstrap.min.js"></script>-->
+
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="vendor/magnific-popup/jquery.magnific-popup.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/creative.min.js"></script>
+    <!-- <script src="js/creative.js"></script> -->
+
+    <!-- Format secret and make transaction to smart contract -->
+    <script src="js/interactWeb3.min.js"></script>
+    <script src="js/bn.min.js"></script>    
+    <!-- <script src="js/checkWeb3.js"></script> -->
+    <!-- <script src="js/bn.js"></script> -->
+
+</body>
+
+</html>

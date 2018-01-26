@@ -110,6 +110,14 @@ contract BlockchainSaxonyMeetupCoin is StandardToken {
 
         require (members[msg.sender]);      // check if msg.sender is in members
         
+        for (uint j = 0; j < claims.length; j++){
+            uint8 alreadyClaimed;
+                if (msg.sender == claims[i].user){
+                    alreadyClaimed ++;
+                } 
+        }
+        // Event to inform user if failed TODO
+        require (alreadyClaimed < 1);        // check if msg.sender is already in claim
         uint i = claims.length;             // get array length
         claims.length++;                    // increase array length
         claims[i].user = msg.sender;        // write current msg.sender into latest index of claims[].user
@@ -141,8 +149,7 @@ contract BlockchainSaxonyMeetupCoin is StandardToken {
 
 //Hash of adress alone. Resulting hash bit-by-bit XOR secret and hash again.
             bytes32 hashAddress = keccak256(claims[i].user);
-            bytes32 xorAddressSecret = hashAddress ^ _secret;
-            bytes32 validHash = keccak256(xorAddressSecret);
+            bytes32 validHash = keccak256(hashAddress ^ _secret);
 
             if (validHash == claims[i].addressSecret){
 

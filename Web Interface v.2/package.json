@@ -1,0 +1,23 @@
+{
+  "name": "saxonytoken",
+  "version": "1.0.0",
+  "description": "development of saxony meetup token",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/egodigitus/BlockchainSaxonyMeetupTokenClient.git"
+  },
+  "author": "Tim Menapace",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/egodigitus/BlockchainSaxonyMeetupTokenClient/issues"
+  },
+  "homepage": "https://github.com/egodigitus/BlockchainSaxonyMeetupTokenClient#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
