@@ -9,12 +9,15 @@ window.addEventListener('load', function() {
   } else {
     console.log('No web3? You should consider trying MetaMask!')
     // fallback - use your fallback strategy (local node / hosted node + in-dapp id mgmt / fail)
-    web3js = new Web3(new Web3.providers.HttpProvider("http://localhost:8545"));
+    throw document.getElementById('warning').innerHTML= "Can't locate MetaMask plugin. Please install MetaMask first.";
   }
+  loggedIn();
+  checkNetwork();
 
 });
 
 // Check if user is logged into MetaMask
+function loggedIn(){
 web3.eth.getAccounts(function(err, accounts){
     if (err != null) console.error("An error occurred: " + err);
     else if (accounts.length == 0) {
@@ -22,9 +25,10 @@ web3.eth.getAccounts(function(err, accounts){
       document.getElementById('warning').innerHTML= "Please log into MetaMask";
     }
     else console.log("User is logged in to MetaMask");
-});
+})};
 
 // Check if user is on the correct network
+function checkNetwork(){
 web3.version.getNetwork((err, netId) => {
   switch (netId) {
     case "1":
@@ -50,11 +54,14 @@ web3.version.getNetwork((err, netId) => {
       console.log('This is an unknown network.')
       document.getElementById('warning').innerHTML= "Please change to Rinkeby test network.";
   }
-})
+}) };
 
 
 //Prepares the secret for the transaction
 function encodeSecret(){
+
+loggedIn();
+checkNetwork();
 
 var contractAddress = "0x23a610a8aa3582ef0ad45c60a7c66162b5d5b6c8";
 
@@ -68,6 +75,7 @@ var hashUser = web3.sha3(userAddress, {encoding: 'hex'});
 
 // Get the secret from user input
 var secret = document.getElementById('secret').value;
+if (secret.length === 0) throw document.getElementById('warning').innerHTML= "Secret can't be empty.";
 console.log(secret);
 
 // Encode the secret
