@@ -1,0 +1,30 @@
+{
+  "name": "saxonymeetup",
+  "version": "1.0.0",
+  "description": "development of saxony meetup token",
+  "main": "server.js",
+  "dependencies": {
+    "bn.js": "^4.11.8",
+    "solidity-sha3": "^0.4.1",
+    "web3": "^1.0.0-beta.27"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/egodigitus/BlockchainSaxonyMeetupTokenClient.git"
+  },
+  "keywords": [
+    "Blockchain",
+    "Ethereum",
+    "Token"
+  ],
+  "author": "Tim Menapace",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/egodigitus/BlockchainSaxonyMeetupTokenClient/issues"
+  },
+  "homepage": "https://github.com/egodigitus/BlockchainSaxonyMeetupTokenClient#readme"
+}
